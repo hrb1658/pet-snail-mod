@@ -6,25 +6,25 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 import com.hrb1658.petsnailmod.Reference;
-import com.hrb1658.petsnailmod.entity.EntitySnail;
+import com.hrb1658.petsnailmod.entity.EntityBabySnail;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderSnail extends RenderLiving {
-	
-	private ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/entities/snail.png");
+public class RenderBabySnail extends RenderLiving {
 
-	public RenderSnail(ModelBase model, float shadowSize) {
+	private ResourceLocation texture = new ResourceLocation(Reference.MOD_ID, "textures/entities/baby_snail.png");
+
+	public RenderBabySnail(ModelBase model, float shadowSize) {
 		super(model, shadowSize);
 	}
-	
-	protected ResourceLocation getEntityTexture(EntitySnail entity) {
+
+	protected ResourceLocation getEntityTexture(EntityBabySnail entity) {
 		return texture;
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return getEntityTexture((EntitySnail)entity);
+		return getEntityTexture((EntityBabySnail) entity);
 	}
 }

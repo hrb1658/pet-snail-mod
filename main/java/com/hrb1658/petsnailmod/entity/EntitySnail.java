@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -13,12 +14,6 @@ import net.minecraft.world.World;
 
 public class EntitySnail extends EntityAnimal {
 	
-	private int snailType;
-
-	public int getSnailType() {
-		return snailType;
-	}
-
 	public EntitySnail(World world) {
 		super(world);
 		setSize(0.8F, 0.8F);
@@ -26,8 +21,12 @@ public class EntitySnail extends EntityAnimal {
 		this.tasks.addTask(0, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
 		this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-
-		snailType = rand.nextInt(5);
+		this.tasks.addTask(3, new EntityAISwimming(this));
+	}
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
 	}
 	
 	@Override
@@ -51,21 +50,17 @@ public class EntitySnail extends EntityAnimal {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
-		
-		tag.setInteger("SnailType", snailType);
 	}
 	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
 		
-		snailType = tag.getInteger("SnailType");
-		System.err.println("SNAIL TYPE: " + snailType);
 	}
 	
 	@Override
 	protected void func_145780_a(int x, int y, int z, Block block) {
-		worldObj.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, "petsnailmod:slime", 0.5F, 1.5F);
+		worldObj.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, "petsnailmod:slime", 0.05F, 1.5F);
 	}
 	
 	@Override

@@ -1,1 +1,5 @@
 entity.petsnailmod.entitySnail.name=Snail
+entity.petsnailmod.entityBabySnail.name=Baby Snail
+
+item.itemSnailNetEmpty.name=Empty Snail Net
+item.itemSnailNetFull.name=Full Snail Net

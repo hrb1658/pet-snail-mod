@@ -1,7 +1,10 @@
 package com.hrb1658.petsnailmod.proxy;
 
+import com.hrb1658.petsnailmod.entity.EntityBabySnail;
 import com.hrb1658.petsnailmod.entity.EntitySnail;
+import com.hrb1658.petsnailmod.render.entity.ModelBabySnail;
 import com.hrb1658.petsnailmod.render.entity.ModelSnail;
+import com.hrb1658.petsnailmod.render.entity.RenderBabySnail;
 import com.hrb1658.petsnailmod.render.entity.RenderSnail;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -13,6 +16,7 @@ public class ClientProxy extends CommonProxy {
 	
 	public void registerRenders() {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySnail.class, new RenderSnail(new ModelSnail(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBabySnail.class, new RenderBabySnail(new ModelBabySnail(), 0.5F));
 	}
 	
 	@Override
