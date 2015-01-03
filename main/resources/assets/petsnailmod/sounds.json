@@ -1,0 +1,8 @@
+{
+    "slime": {
+        "category": "master",
+        "sounds": [
+            {"name": "slime", "stream": false}
+        ]
+    }
+}
